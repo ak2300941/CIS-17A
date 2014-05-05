@@ -1,8 +1,8 @@
 /* 
  * File:   DECK.h
  * Author: rcc
- *
  * Created on April 30, 2014, 1:59 PM
+ * Specification for the Deck
  */
 
 #ifndef DECK_H
@@ -13,6 +13,7 @@
 class Deck{
    private:
        Card **card;
+       int *index;
        int nCards;
        int nDelt;
    public:
