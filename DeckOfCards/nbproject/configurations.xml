@@ -4,7 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>AbstractCard.h</itemPath>
       <itemPath>Card.h</itemPath>
+      <itemPath>ChildCard.h</itemPath>
       <itemPath>Deck.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"

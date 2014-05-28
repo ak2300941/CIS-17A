@@ -8,7 +8,9 @@
 #ifndef CARD_H
 #define	CARD_H
 
-class Card{
+#include "AbstractCard.h"
+
+class Card:public AbstractCard{
    private:
        char number;
    public:
