@@ -17,9 +17,10 @@ class Vacation{
        //Constructor
        Vacation(int);
        //Accessor Functions
-       int getNumb() const;
+       int getNuv() const;
        //Mutator Functions
        void setNumb(int);
+       void reset();
 };
 
 #endif	/* VACATION_H */

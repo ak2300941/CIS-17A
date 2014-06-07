@@ -15,9 +15,14 @@ Holidays::Holidays(int n){
     numb=n;
 }
 
-int Holidays::getNumb() const{
+int Holidays::getNuh() const{
     return numb;
 }
+
 void Holidays::setNumb(int n){
-    numb=n;
+    numb=numb+n;
+}
+
+void Holidays::reset(){
+    numb=0;
 }

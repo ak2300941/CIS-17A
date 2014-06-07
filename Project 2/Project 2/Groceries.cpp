@@ -15,9 +15,13 @@ Groceries::Groceries(int n){
     numb=n;
 }
 
-int Groceries::getNumb() const{
+int Groceries::getNug() const{
     return numb;
 }
 void Groceries::setNumb(int n){
-    numb=n;
+    numb=numb+n;
+}
+
+void Groceries::reset(){
+    numb=0;
 }

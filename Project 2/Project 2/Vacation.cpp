@@ -15,9 +15,14 @@ Vacation::Vacation(int n){
     numb=n;
 }
 
-int Vacation::getNumb() const{
+int Vacation::getNuv() const{
     return numb;
 }
+
 void Vacation::setNumb(int n){
-    numb=n;
+    numb=numb+n;
+}
+
+void Vacation::reset(){
+    numb=0;
 }

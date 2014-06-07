@@ -17,9 +17,10 @@ class Work{
        //Constructor
        Work(int);
        //Accessor Functions
-       int getNumb() const;
+       int getNuw() const;
        //Mutator Functions
        void setNumb(int);
+       void reset();
 };
 
 #endif	/* WORK_H */

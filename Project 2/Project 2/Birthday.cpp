@@ -12,12 +12,18 @@ Birthday::Birthday(){
 }
 
 Birthday::Birthday(int n){
-    numb=n;
+    numb=n;;
 }
 
-int Birthday::getNumb() const{
+int Birthday::getNub() const{
     return numb;
 }
+
 void Birthday::setNumb(int n){
-    numb=n;
+    numb=numb+n;
 }
+
+void Birthday::reset(){
+    numb=0;
+}
+

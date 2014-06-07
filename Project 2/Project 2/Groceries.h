@@ -17,9 +17,10 @@ class Groceries{
        //Constructor
        Groceries(int);
        //Accessor Functions
-       int getNumb() const;
+       int getNug() const;
        //Mutator Functions
        void setNumb(int);
+       void reset();
 };
 
 #endif	/* GROCERIES_H */

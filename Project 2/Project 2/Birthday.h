@@ -17,9 +17,10 @@ class Birthday{
        //Constructor
        Birthday(int);
        //Accessor Functions
-       int getNumb() const;
+       int getNub() const;
        //Mutator Functions
        void setNumb(int);
+       void reset();
 };
 
 

@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Birthday.o \
+	${OBJECTDIR}/Calculate.o \
 	${OBJECTDIR}/Event.o \
 	${OBJECTDIR}/Groceries.o \
 	${OBJECTDIR}/Holidays.o \
@@ -73,6 +74,11 @@ ${OBJECTDIR}/Birthday.o: Birthday.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Birthday.o Birthday.cpp
+
+${OBJECTDIR}/Calculate.o: Calculate.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Calculate.o Calculate.cpp
 
 ${OBJECTDIR}/Event.o: Event.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -6,19 +6,21 @@
  */
 
 #include "Event.h"
+#include <iostream>
+using namespace std;
 
-Event::Event(){
-    eve="";
+
+Event::Event(): Birthday(), Groceries(), Holidays(), Vacation(), Work(){
+    
 }
 
-Event::Event(int e){    //Use this in other classes
-    eve=e;
+Event::Event(int b,int g,int h,int v,int w):
+        Birthday(b), Groceries(g), Holidays(h), Vacation(v), Work(w){
+    
 }
 
-string Event::getEve() const{
-    return eve;
+void Event::addUp() const{
+    cout<<"Total Events: "<<getNub()+getNug()+getNuh()+getNuv()+getNuw();
 }
 
-void Event::setEve(string e){
-    eve=e;
-}
+

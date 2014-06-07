@@ -15,9 +15,14 @@ Work::Work(int n){
     numb=n;
 }
 
-int Work::getNumb() const{
+int Work::getNuw() const{
     return numb;
 }
+
 void Work::setNumb(int n){
-    numb=n;
+    numb=numb+n;
+}
+
+void Work::reset(){
+    numb=0;
 }

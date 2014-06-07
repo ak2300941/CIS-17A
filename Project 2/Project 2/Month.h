@@ -27,6 +27,5 @@ class Month{
        void setDays(int);
 };
 
-
 #endif	/* MONTH_H */
 

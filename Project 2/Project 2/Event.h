@@ -7,24 +7,23 @@
 
 #ifndef EVENT_H
 #define	EVENT_H
-#include <string>
+
+#include "Birthday.h"
+#include "Groceries.h"
+#include "Holidays.h"
+#include "Vacation.h"
+#include "Work.h"
 using namespace std;
 
-class Event{
-   private:
-       string eve;
+class Event: public Birthday, public Groceries, public Holidays, public Vacation, public Work{
    public:
        //Default Constructor
        Event();
-       //Constructor
-       Event(int);
-       //Accessor Functions
-       string getEve() const;
-       //Mutator Functions
-       void setEve(string);
+       Event(int b,int g,int h,int v,int w);
+       void addUp() const;
+       
+
 };
-
-
 
 #endif	/* EVENT_H */
 

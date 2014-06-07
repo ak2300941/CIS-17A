@@ -17,9 +17,10 @@ class Holidays{
        //Constructor
        Holidays(int);
        //Accessor Functions
-       int getNumb() const;
+       int getNuh() const;
        //Mutator Functions
        void setNumb(int);
+       void reset();
 };
 
 #endif	/* HOLIDAYS_H */
