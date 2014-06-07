@@ -21,8 +21,6 @@ class Event: public Birthday, public Groceries, public Holidays, public Vacation
        Event();
        Event(int b,int g,int h,int v,int w);
        void addUp() const;
-       
-
 };
 
 #endif	/* EVENT_H */

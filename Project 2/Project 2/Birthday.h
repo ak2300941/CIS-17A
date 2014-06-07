@@ -23,6 +23,5 @@ class Birthday{
        void reset();
 };
 
-
 #endif	/* BIRTHDAY_H */
 

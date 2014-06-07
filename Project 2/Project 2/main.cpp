@@ -25,13 +25,14 @@ using namespace std;
 #include "Calculate.h"
 
 //Function Prototypes
-void findDays(string &,int &);
+void findDays(string &,int &,int);
 
 //Execution Begins Here
 int main(int argc, char** argv) {
     //Declare Variables
     int days,finish=0,plan=0,choice1,choice2;
     int full=0;
+    int year,leap;
     int check1=0,check2=0;
     //For Randomize Event for Calendar
     srand(static_cast<unsigned int>(time(0)));
@@ -52,6 +53,19 @@ int main(int argc, char** argv) {
             getline(dataFile,files,'$');
             cout<<files<<endl;
         }
+    //Get the Year (For Leap Years)
+    cout<<"Enter the Year: ";
+    cin>>year;
+    //Calculate if Leap Year or Not
+    if(year%4==0){
+        cout<<"Leap Year"<<endl;
+        leap=1;
+    }
+    else{
+        cout<<"Non-Leap year"<<endl;
+        leap=0;
+    }
+    //Get the Month
     cout<<"Enter the month to plan: (Follow the format given)"<<endl;
     cout<<"~~~~~~~~~~~~~~~~~~~"<<endl;
     cout<<"January"<<endl;
@@ -71,11 +85,11 @@ int main(int argc, char** argv) {
     cin>>name;
     getline(cin,trash);
     //Find the days in the Month
-    findDays(name,days);
+    findDays(name,days,leap);
     //Construct the Month class
     Month date(name,days);
-    string da[date.getDays()];  //To add event
-    
+    //String array to carry event name
+    string da[date.getDays()];
     do{
         cout<<endl;
         cout<<"~~Menu to add in Events~~~"<<endl;
@@ -99,14 +113,13 @@ int main(int argc, char** argv) {
             for(int i=0;i<date.getDays();i++){
                 da[i]="";
             }
-            //Pointer
+            //Using pointers for the array to =0
             *(amount+0)=0;
             *(amount+1)=0;
             *(amount+2)=0;
             *(amount+3)=0;
             *(amount+4)=0;
             *(amount+5)=0;
-            
             //Reset from Class
             evb.reset();
             evg.reset();
@@ -115,9 +128,11 @@ int main(int argc, char** argv) {
             evw.reset();
             full=0;
         }
+        //If the Calendar is filled up
         if(choice1==1&&full==1){
             cout<<"Sorry. Event Calendar is full"<<endl;
         }
+        //If the Calendar isn't filled up
         if(choice1==1&&full!=1){
             do{
                 cout<<"~~Choose the Events to add into the Monthly Planner~~~"<<endl;
@@ -128,13 +143,17 @@ int main(int argc, char** argv) {
                 cout<<"5. Work-Related"<<endl;
                 cout<<"6. Back to main menu"<<endl;
                 cin>>choice2;
+                //Birthdays
                 if(choice2==1){
+                    //Amount of Birthdays
                     cout<<"How many Birthday events is there?"<<endl;
                     cin>>amount[0];
                     evb.setNumb(amount[0]);
+                    //Enter Day
                     for(int i=0;i<amount[0];i++){
                         cout<<"Which day is the Birthday event?"<<endl;
                         cin>>day;
+                        //If the Day is filled do this
                         if(da[day-1]!=""){
                             do{
                                 cout<<"Event for this day is already filled"<<endl;
@@ -145,13 +164,17 @@ int main(int argc, char** argv) {
                         da[day-1]="Birthday Event";
                     }
                 }
+                //Groceries
                 if(choice2==2){
+                    //Amount of Groceries
                     cout<<"How many times do you buy groceries in a month?"<<endl;
                     cin>>amount[1];
                     evg.setNumb(amount[1]);
                     for(int i=0;i<amount[1];i++){
+                        //Enter Day
                         cout<<"Which day do you buy groceries?"<<endl;
                         cin>>day;
+                        //If the Day is filled do this
                         if(da[day-1]!=""){
                             do{
                                 cout<<"Event for this day is already filled"<<endl;
@@ -162,13 +185,17 @@ int main(int argc, char** argv) {
                          da[day-1]="Groceries";
                     }
                 }
+                //Holiday
                 if(choice2==3){
+                    //Amount of Holidays
                     cout<<"How many holidays are there this month?"<<endl;
                     cin>>amount[2];
                     evh.setNumb(amount[2]);
                     for(int i=0;i<amount[2];i++){
+                        //Enter Day
                         cout<<"Which day is a holiday?"<<endl;
                         cin>>day;
+                        //If the Day is filled do this
                         if(da[day-1]!=""){
                             do{
                                 cout<<"Event for this day is already filled"<<endl;
@@ -179,13 +206,17 @@ int main(int argc, char** argv) {
                         da[day-1]="Holiday";
                     }
                 }
+                //Vacation
                 if(choice2==4){
+                    //Amount of Vacations
                     cout<<"How many vacations do you have this month?"<<endl;
                     cin>>amount[3];
                     evv.setNumb(amount[3]);
                     for(int i=0;i<amount[3];i++){
+                        //Enter Day
                         cout<<"Which day is your vacation?"<<endl;
                         cin>>day;
+                        //If the Day is filled do this
                         if(da[day-1]!=""){
                             do{
                                 cout<<"Event for this day is already filled"<<endl;
@@ -196,13 +227,17 @@ int main(int argc, char** argv) {
                         da[day-1]="Vacation";
                     }
                 }
+                //Work
                 if(choice2==5){
+                    //Amount of Work
                     cout<<"How many work related days you have this month?"<<endl;
                     cin>>amount[4];
                     evw.setNumb(amount[4]);
                     for(int i=0;i<amount[3];i++){
+                        //Enter Day
                         cout<<"When do you have work related events?"<<endl;
                         cin>>day;
+                        //If the Day is filled do this
                         if(da[day-1]!=""){
                             do{
                                 cout<<"Event for this day is already filled"<<endl;
@@ -219,8 +254,11 @@ int main(int argc, char** argv) {
         //To make it easier
         int tot;
         int dah=date.getDays();
+        //If already made options 1
         if(choice1==2)check2=1;
+        //If made option 1 and choice option 2 also
         if(choice1==2&&check1==1){
+            //Resets all data
             cout<<"Resetting Data"<<endl;
             //Reset everything
             for(int i=0;i<date.getDays();i++){
@@ -239,9 +277,11 @@ int main(int argc, char** argv) {
             evw.reset();
             full=0;
         }
+        //If choice option 2 and Calendar is filled up
         if(choice1==2&&full==1){
             cout<<"Sorry. Event Calendar is full"<<endl;
         }
+        //If choice option 2 and Calendar isn't filled up
         if(choice1==2&&full!=1){
             do{
                 //Check to see if there are more events than days in the month
@@ -335,7 +375,6 @@ int main(int argc, char** argv) {
             *(amount+3)=0;
             *(amount+4)=0;
             *(amount+5)=0;
-            
             //Reset from Class
             evb.reset();
             evg.reset();
@@ -346,6 +385,7 @@ int main(int argc, char** argv) {
         }
         cout<<endl;
         string search;
+        //Search for Events and get days with those events
         if(choice1==4){
             cout<<"Enter which event you want to find the days for."<<endl;
             cout<<"Enter with the format of the following events below"<<endl;
@@ -380,14 +420,12 @@ int main(int argc, char** argv) {
                 if(search==da[i]){
                     cout<<"Found in Day "<<i+1<<endl;
                 }
-                else{
-                    cout<<"Not Found in Day "<<i+1<<endl;
-                }
             }
             cout<<endl;
         }
-        //To find empty array
+        
         if(choice1==5){
+            //Displays Free Days of the month
             cout<<"The following days are free"<<endl;
             for(int i=0;i<date.getDays();i++){
                 if(da[i]==""){
@@ -395,6 +433,7 @@ int main(int argc, char** argv) {
                 }
             }
             cout<<endl;
+            //Displays Days with events in that month
             cout<<"The following days are not free"<<endl;
             for(int i=0;i<date.getDays();i++){
                 if(da[i]!=""){
@@ -405,11 +444,12 @@ int main(int argc, char** argv) {
         }
         cout<<endl;
         if(choice1==6){
-            //Display
+            //Display Day # and Event corresponding to it
             for(int i=0;i<date.getDays();i++){
                 cout<<date.getName()<<" "<<i+1<<": "<<da[i]<<endl;
             }
             cout<<endl;
+            //Displays the # for each event
             cout<<"Birthday Events: "<<evb.getNub()<<endl;
             cout<<"Groceries: "<<evg.getNug()<<endl;
             cout<<"Holidays: "<<evh.getNuh()<<endl;
@@ -417,11 +457,14 @@ int main(int argc, char** argv) {
             cout<<"Work: "<<evw.getNuw()<<endl;
             //Event Class to add up all Events happened
             Event a(evb.getNub(),evg.getNug(),evh.getNuh(),evv.getNuv(),evw.getNuw());
+            //Adds all the events and displays the # for all events
             a.addUp();
             cout<<endl;
-            //Pull out Percentage
+            //Classes for Calculating Percentage
             Calculate stuff(evb.getNub(),evg.getNug(),evh.getNuh(),evv.getNuv(),evw.getNuw());
+            //For Format and decimal places
             cout<<setprecision(2)<<fixed<<endl;
+            //Shows percentage for each Event / Total Event
             cout<<"In One Month"<<endl;
             cout<<"Percentage of Birthdays: %"<<stuff.getBP()*100<<endl;
             cout<<"Percentage of Groceries: %"<<stuff.getGP()*100<<endl;
@@ -435,20 +478,21 @@ int main(int argc, char** argv) {
             for(int i=0;i<date.getDays();i++){
                 da[i]="";
             }
-            //Pointer
+            //Pointer to 0
             *(amount+0)=0;
             *(amount+1)=0;
             *(amount+2)=0;
             *(amount+3)=0;
             *(amount+4)=0;
             *(amount+5)=0;
-            //Reset from Class
+            //Reset from Class all to 0
             evb.reset();
             evg.reset();
             evh.reset();
             evv.reset();
             evw.reset();
             full=0;
+            //Changes the month by input
             cout<<"Changing the Month"<<endl;
             cout<<"Enter the month to plan: (Follow the format given)"<<endl;
             cout<<"~~~~~~~~~~~~~~~~~~~"<<endl;
@@ -469,7 +513,8 @@ int main(int argc, char** argv) {
             cin>>name;
             getline(cin,trash);
             //Find the days in the Month
-            findDays(name,days);
+            findDays(name,days,leap);
+            //Unilize the classes mutator functions
             date.setDays(days);
             date.setName(name);
         }
@@ -480,12 +525,14 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void findDays(string &month,int &days){
+void findDays(string &month,int &days,int leap){
     string a[12]={"January","February","March","April","May","June","July","August","September","October","November","December"};
     //Find the Days for that month
     if(month=="January"||month=="March"||month=="May"||month=="July"||month=="August"||month=="October"||month=="December")days=31;
     if(month=="April"||month=="June"||month=="September"||month=="November")days=30;
-    if(month=="February")days=28;
+    //28 days in non leap years
+    if(month=="February"&&leap==0)days=28;
+    if(month=="February"&&leap==1)days=29;
     //If Months are spelled wrong or in a different format
     if(month!="January"&&month!="February"&&month!="March"&&month!="April"&&month!="May"&&month!="June"&&month!="July"&&month!="August"
             &&month!="September"&&month!="October"&&month!="November"&&month!="December"){
