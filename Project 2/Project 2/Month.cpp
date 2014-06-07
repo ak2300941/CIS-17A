@@ -33,4 +33,3 @@ void Month::setName(string n){
 void Month::setDays(int d){
     days=d;
 }
-

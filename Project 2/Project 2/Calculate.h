@@ -34,6 +34,8 @@ class Calculate{
        float getHP() const;
        float getVP() const;
        float getWP() const;
+       int getT() const;
+       
        
 };
 

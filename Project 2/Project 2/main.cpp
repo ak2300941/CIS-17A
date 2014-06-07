@@ -12,6 +12,7 @@
 #include <ctime>
 #include <fstream>
 #include <iomanip>
+#include <new>
 using namespace std;
 
 //User-Defined Libraries
@@ -23,6 +24,12 @@ using namespace std;
 #include "Vacation.h"
 #include "Work.h"
 #include "Calculate.h"
+#include "Abstract.h"
+
+//Structure
+struct menu{
+    string a;
+};
 
 //Function Prototypes
 void findDays(string &,int &,int);
@@ -30,7 +37,7 @@ void findDays(string &,int &,int);
 //Execution Begins Here
 int main(int argc, char** argv) {
     //Declare Variables
-    int days,finish=0,plan=0,choice1,choice2;
+    int days,finish=0,plan=0,choice1,choice2,choice3;
     int full=0;
     int year,leap;
     int check1=0,check2=0;
@@ -65,10 +72,13 @@ int main(int argc, char** argv) {
         cout<<"Non-Leap year"<<endl;
         leap=0;
     }
+    //use structure somehow
+    menu ab1;
+    ab1.a="January";
     //Get the Month
     cout<<"Enter the month to plan: (Follow the format given)"<<endl;
     cout<<"~~~~~~~~~~~~~~~~~~~"<<endl;
-    cout<<"January"<<endl;
+    cout<<ab1.a<<endl;
     cout<<"February"<<endl;
     cout<<"March"<<endl;
     cout<<"April"<<endl;
@@ -211,7 +221,19 @@ int main(int argc, char** argv) {
                     //Amount of Vacations
                     cout<<"How many vacations do you have this month?"<<endl;
                     cin>>amount[3];
-                    evv.setNumb(amount[3]);
+                    cout<<"Do you want to add another vacation day?"<<endl;
+                    cout<<"1. Yes"<<endl;
+                    cout<<"2. No"<<endl;
+                    cin>>choice3;
+                    if(choice3==1){
+                        evv.setNumb(amount[3]);
+                        evv.operator ++();
+                        amount[3]=amount[3]+evv.getAdd();
+                        evv.setNuma(amount[3]);
+                    }
+                    if(choice3==2){
+                        evv.setNumb(amount[3]);
+                    }
                     for(int i=0;i<amount[3];i++){
                         //Enter Day
                         cout<<"Which day is your vacation?"<<endl;
@@ -303,6 +325,7 @@ int main(int argc, char** argv) {
                     cout<<endl;
                 }
                 if(tot==dah)full=1;
+                //Exception
             }while(tot>dah);
             //Add Amount After the check
             evb.setNumb(amount[0]);
@@ -464,13 +487,44 @@ int main(int argc, char** argv) {
             Calculate stuff(evb.getNub(),evg.getNug(),evh.getNuh(),evv.getNuv(),evw.getNuw());
             //For Format and decimal places
             cout<<setprecision(2)<<fixed<<endl;
-            //Shows percentage for each Event / Total Event
+            //Use Dynamic Array
+            float *ptr;
+            //Check with try catch
+            try{
+                ptr=new float[5];
+            }
+            catch(bad_alloc){
+                cout<<"Insufficient memory"<<endl;
+            }
+            /*
             cout<<"In One Month"<<endl;
             cout<<"Percentage of Birthdays: %"<<stuff.getBP()*100<<endl;
             cout<<"Percentage of Groceries: %"<<stuff.getGP()*100<<endl;
             cout<<"Percentage of Holidays: %"<<stuff.getHP()*100<<endl;
             cout<<"Percentage of Vacation: %"<<stuff.getVP()*100<<endl;
             cout<<"Percentage of Work: %"<<stuff.getWP()*100<<endl;
+            */
+            //Shows percentage for each Event / Total Event
+            ptr[0]=stuff.getBP()*100;
+            ptr[1]=stuff.getGP()*100;
+            ptr[2]=stuff.getHP()*100;
+            ptr[3]=stuff.getVP()*100;
+            ptr[4]=stuff.getWP()*100;
+            cout<<"Percentage in order (Birthday, Groceries, Holidays, Vacation, Work"<<endl;
+            for(int i=0;i<5;i++){
+                cout<<"%"<<ptr[i]<<" ";
+            }
+            
+            
+            cout<<endl;
+            cout<<"~~~Random Abstract Test~~~"<<endl;
+            Abstract abs("Person",5); //Person A wants 5 days of vacation
+            abs.seta(15);
+            cout<<"Gets: "<<abs.getStuff()<<endl;
+            //
+            
+            //Delete
+            delete []ptr;
             cout<<endl;
         }
         if(choice1==7){
@@ -514,7 +568,7 @@ int main(int argc, char** argv) {
             getline(cin,trash);
             //Find the days in the Month
             findDays(name,days,leap);
-            //Unilize the classes mutator functions
+            //Utilize the classes mutator functions
             date.setDays(days);
             date.setName(name);
         }

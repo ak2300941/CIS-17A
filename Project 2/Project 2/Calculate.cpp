@@ -36,6 +36,10 @@ Calculate::Calculate(int b, int g, int h, int v, int w){
     wperc=(float)w/(float)total;
 }
 
+int Calculate::getT() const{
+    return total;
+}
+
 float Calculate::getBP() const{
     return bperc;
 }

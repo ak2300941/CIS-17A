@@ -11,6 +11,7 @@
 class Vacation{
     private:
        int numb;
+       int add;
    public:
        //Default Constructor
        Vacation();
@@ -18,8 +19,11 @@ class Vacation{
        Vacation(int);
        //Accessor Functions
        int getNuv() const;
+       int getAdd() const;
        //Mutator Functions
+       Vacation operator++();
        void setNumb(int);
+       void setNuma(int);
        void reset();
 };
 

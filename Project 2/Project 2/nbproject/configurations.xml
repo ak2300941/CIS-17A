@@ -4,12 +4,14 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Abstract.h</itemPath>
       <itemPath>Birthday.h</itemPath>
       <itemPath>Calculate.h</itemPath>
       <itemPath>Event.h</itemPath>
       <itemPath>Groceries.h</itemPath>
       <itemPath>Holidays.h</itemPath>
       <itemPath>Month.h</itemPath>
+      <itemPath>Test.h</itemPath>
       <itemPath>Vacation.h</itemPath>
       <itemPath>Work.h</itemPath>
     </logicalFolder>
@@ -20,6 +22,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Abstract.cpp</itemPath>
       <itemPath>Birthday.cpp</itemPath>
       <itemPath>Calculate.cpp</itemPath>
       <itemPath>Event.cpp</itemPath>
@@ -52,6 +55,10 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Abstract.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Abstract.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Birthday.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Birthday.h" ex="false" tool="3" flavor2="0">
@@ -75,6 +82,8 @@
       <item path="Month.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Month.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Vacation.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -107,6 +116,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Abstract.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Abstract.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Birthday.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Birthday.h" ex="false" tool="3" flavor2="0">
@@ -130,6 +143,8 @@
       <item path="Month.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Month.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Vacation.cpp" ex="false" tool="1" flavor2="0">
       </item>

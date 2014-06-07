@@ -1,5 +1,6 @@
 build/Debug/Cygwin_4.x-Windows/main.o: main.cpp Month.h Event.h \
- Birthday.h Groceries.h Holidays.h Vacation.h Work.h Calculate.h
+ Birthday.h Groceries.h Holidays.h Vacation.h Work.h Calculate.h \
+ Abstract.h Test.h
 
 Month.h:
 
@@ -16,3 +17,7 @@ Vacation.h:
 Work.h:
 
 Calculate.h:
+
+Abstract.h:
+
+Test.h:
