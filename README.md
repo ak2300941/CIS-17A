@@ -1,4 +1,4 @@
 42448
 =====
 
-CSC 17A
+Intro to Comp Info Sys
